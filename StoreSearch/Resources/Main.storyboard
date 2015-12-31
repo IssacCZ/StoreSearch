@@ -16,11 +16,35 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="szp-J1-Voy">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" placeholder="App name, artist, song, album, e-book" translatesAutoresizingMaskIntoConstraints="NO" id="KLu-Rx-boK">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="szp-J1-Voy" secondAttribute="bottom" id="35Z-cX-Fd7"/>
+                            <constraint firstAttribute="trailing" secondItem="KLu-Rx-boK" secondAttribute="trailing" id="9GY-hH-jGg"/>
+                            <constraint firstItem="szp-J1-Voy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="M9n-Z4-3dm"/>
+                            <constraint firstItem="KLu-Rx-boK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Mdh-0W-8M5"/>
+                            <constraint firstAttribute="trailing" secondItem="szp-J1-Voy" secondAttribute="trailing" id="iz2-og-ATm"/>
+                            <constraint firstItem="KLu-Rx-boK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="szE-E5-yP1"/>
+                            <constraint firstItem="szp-J1-Voy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="v6W-b6-r5T"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="KLu-Rx-boK" id="VKY-nE-w1K"/>
+                        <outlet property="tableView" destination="szp-J1-Voy" id="nLn-m9-Ram"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="695" y="490"/>
         </scene>
     </scenes>
 </document>
