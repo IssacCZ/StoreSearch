@@ -13,6 +13,7 @@
 		2279862A1C33F7DA00449E9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227986231C33F7DA00449E9C /* LaunchScreen.storyboard */; };
 		2279862B1C33F7DA00449E9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227986241C33F7DA00449E9C /* Main.storyboard */; };
 		227986301C33F83000449E9C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2279862F1C33F83000449E9C /* Default-568h@2x.png */; };
+		228EA7711C355BFF00AE358B /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA7701C355BFF00AE358B /* SearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		227986241C33F7DA00449E9C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		227986261C33F7DA00449E9C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2279862F1C33F83000449E9C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		228EA7701C355BFF00AE358B /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		22E6FC401C02BD530095479F /* StoreSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -42,6 +44,7 @@
 			children = (
 				2279861F1C33F7DA00449E9C /* AppDelegate.swift */,
 				227986201C33F7DA00449E9C /* SearchVC.swift */,
+				228EA7701C355BFF00AE358B /* SearchResult.swift */,
 			);
 			path = Codes;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				227986281C33F7DA00449E9C /* SearchVC.swift in Sources */,
+				228EA7711C355BFF00AE358B /* SearchResult.swift in Sources */,
 				227986271C33F7DA00449E9C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,7 +12,7 @@ class SearchVC: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
-    var searchResults = [String]()
+    var searchResults = [SearchResult]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +28,12 @@ class SearchVC: UIViewController {
 extension SearchVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        searchResults = [String]()
+        searchResults = [SearchResult]()
         for i in 0...2 {
-            searchResults.append(String(format: "Fake Reslut %d for '%@'", i, searchBar.text!))
+            let searchResult = SearchResult()
+            searchResult.name = String(format: "Fake Reslut %d for", i)
+            searchResult.artistName = searchBar.text!
+            searchResults.append(searchResult)
         }
         
         tableView.reloadData()
@@ -51,10 +54,12 @@ extension SearchVC: UITableViewDataSource {
         
         var cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
         if cell == nil {
-            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
         }
         
-        cell.textLabel!.text = searchResults[indexPath.row]
+        let searchResult = searchResults[indexPath.row]
+        cell.textLabel!.text = searchResult.name
+        cell.detailTextLabel!.text = searchResult.artistName
         
         return cell
     }
