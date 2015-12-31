@@ -12,6 +12,8 @@ class SearchVC: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    var searchResults = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,3 +25,41 @@ class SearchVC: UIViewController {
     }
 }
 
+extension SearchVC: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchResults = [String]()
+        for i in 0...2 {
+            searchResults.append(String(format: "Fake Reslut %d for '%@'", i, searchBar.text!))
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return .TopAttached
+    }
+}
+
+extension SearchVC: UITableViewDataSource {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellIdentifier = "SearchResultCell"
+        
+        var cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+        if cell == nil {
+            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+        }
+        
+        cell.textLabel!.text = searchResults[indexPath.row]
+        
+        return cell
+    }
+}
+
+extension SearchVC: UITableViewDelegate {
+    
+}
