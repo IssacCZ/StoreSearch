@@ -32,30 +32,47 @@ class SearchVC: UIViewController {
         
         tableView.rowHeight = 80
         
-        searchBar.becomeFirstResponder()    
+        searchBar.becomeFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func urlWithSearchText(searchText: String) -> NSURL {
+        let escapedSearchText = searchText.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        let urlString = String(format: "https://itunes.apple.com/search?term=%@", escapedSearchText)
+        let url = NSURL(string: urlString)
+        
+        return url!
+    }
+    
+    func performStoreRequestWithURL(url: NSURL) -> String? {
+        do {
+            return try String(contentsOfURL: url, encoding: NSUTF8StringEncoding)
+        } catch {
+            print("Download Error: \(error)")
+            return nil
+        }
+    }
 }
 
 extension SearchVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        searchResults = [SearchResult]()
-        if searchBar.text! != "justin" {
-            for i in 0...2 {
-                let searchResult = SearchResult()
-                searchResult.name = String(format: "Fake Reslut %d for", i)
-                searchResult.artistName = searchBar.text!
-                searchResults.append(searchResult)
+        if !searchBar.text!.isEmpty {
+            searchBar.resignFirstResponder()
+            
+            searchResults = [SearchResult]()
+            hasSearched = true
+            
+            let url = urlWithSearchText(searchBar.text!)
+            print("URL: '\(url)'")
+            if let jsonString = performStoreRequestWithURL(url) {
+                print("Received JSON string '\(jsonString)'")
             }
+            
+            tableView.reloadData()
         }
-        
-        hasSearched = true
-        
-        tableView.reloadData()
     }
     
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
