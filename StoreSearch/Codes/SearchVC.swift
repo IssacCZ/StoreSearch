@@ -241,6 +241,7 @@ extension SearchVC: UISearchBarDelegate {
                 if let dictionary = parseJSON(jsonString) {
                     
                     searchResults = parseDictionary(dictionary)
+                    searchResults.sortInPlace(<)
                     tableView.reloadData()
                     
                     return
