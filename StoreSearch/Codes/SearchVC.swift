@@ -240,24 +240,32 @@ extension SearchVC: UISearchBarDelegate {
             isLoading = true
             tableView.reloadData()
             
-//            searchResults = [SearchResult]()
-//            hasSearched = true
-//            
-//            let url = urlWithSearchText(searchBar.text!)
-//            if let jsonString = performStoreRequestWithURL(url) {
-//                if let dictionary = parseJSON(jsonString) {
-//                    
-//                    searchResults = parseDictionary(dictionary)
-//                    searchResults.sortInPlace(<)
-//                    
-//                    isLoading = false
-//                    tableView.reloadData()
-//                    
-//                    return
-//                }
-//            }
-//            
-//            showNetworkError()
+            hasSearched = true
+            searchResults = [SearchResult]()
+            
+            let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+            
+            dispatch_async(queue, { () -> Void in
+                let url = self.urlWithSearchText(searchBar.text!)
+                if let jsonString = self.performStoreRequestWithURL(url) {
+                    if let dictionary = self.parseJSON(jsonString) {
+                        
+                        self.searchResults = self.parseDictionary(dictionary)
+                        self.searchResults.sortInPlace(<)
+            
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.isLoading = false
+                            self.tableView.reloadData()
+                        })
+                        
+                        return
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.showNetworkError()
+                    })
+                }
+            })
         }
     }
     
