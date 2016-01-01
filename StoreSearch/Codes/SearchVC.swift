@@ -14,10 +14,12 @@ class SearchVC: UIViewController {
     
     var searchResults = [SearchResult]()
     var hasSearched = false
+    var isLoading = false
     
     struct TableViewCellIdentifiers {
         static let searchResultCell = "SearchResultCell"
         static let nothingFoundCell = "NothingFoundCell"
+        static let loadingCell = "LoadingCell"
     }
     
     override func viewDidLoad() {
@@ -29,6 +31,8 @@ class SearchVC: UIViewController {
         tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.searchResultCell)
         cellNib = UINib(nibName: TableViewCellIdentifiers.nothingFoundCell, bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.nothingFoundCell)
+        cellNib = UINib(nibName: TableViewCellIdentifiers.loadingCell, bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.loadingCell)
         
         tableView.rowHeight = 80
         
@@ -233,22 +237,27 @@ extension SearchVC: UISearchBarDelegate {
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
             
-            searchResults = [SearchResult]()
-            hasSearched = true
+            isLoading = true
+            tableView.reloadData()
             
-            let url = urlWithSearchText(searchBar.text!)
-            if let jsonString = performStoreRequestWithURL(url) {
-                if let dictionary = parseJSON(jsonString) {
-                    
-                    searchResults = parseDictionary(dictionary)
-                    searchResults.sortInPlace(<)
-                    tableView.reloadData()
-                    
-                    return
-                }
-            }
-            
-            showNetworkError()
+//            searchResults = [SearchResult]()
+//            hasSearched = true
+//            
+//            let url = urlWithSearchText(searchBar.text!)
+//            if let jsonString = performStoreRequestWithURL(url) {
+//                if let dictionary = parseJSON(jsonString) {
+//                    
+//                    searchResults = parseDictionary(dictionary)
+//                    searchResults.sortInPlace(<)
+//                    
+//                    isLoading = false
+//                    tableView.reloadData()
+//                    
+//                    return
+//                }
+//            }
+//            
+//            showNetworkError()
         }
     }
     
@@ -259,7 +268,9 @@ extension SearchVC: UISearchBarDelegate {
 
 extension SearchVC: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !hasSearched {
+        if isLoading {
+            return 1
+        } else if !hasSearched {
             return 0
         } else if searchResults.count == 0 {
             return 1
@@ -269,7 +280,13 @@ extension SearchVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if searchResults.count == 0 {
+        if isLoading {
+            let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.loadingCell, forIndexPath: indexPath)
+            let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
+            spinner.startAnimating()
+            
+            return cell
+        } else if searchResults.count == 0 {
             return tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.nothingFoundCell, forIndexPath: indexPath)
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.searchResultCell, forIndexPath: indexPath) as! SearchResultCell
@@ -293,7 +310,7 @@ extension SearchVC: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if searchResults.count == 0 {
+        if searchResults.count == 0 || isLoading {
             return nil
         } else {
             return indexPath
