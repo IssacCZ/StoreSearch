@@ -55,6 +55,28 @@ class SearchVC: UIViewController {
             return nil
         }
     }
+    
+    func parseJSON(jsonString: String) -> [String: AnyObject]? {
+        guard let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
+            else {
+                return nil
+        }
+        
+        do {
+            return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject]
+        } catch {
+            print("JSON Error: \(error)")
+            return nil
+        }
+    }
+    
+    func showNetworkError() {
+        let alert = UIAlertController(title: "Whoops...", message: "There was an error reading from the iTunes Store. Please try again.", preferredStyle: .Alert)
+        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alert.addAction(action)
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
 }
 
 extension SearchVC: UISearchBarDelegate {
@@ -66,12 +88,16 @@ extension SearchVC: UISearchBarDelegate {
             hasSearched = true
             
             let url = urlWithSearchText(searchBar.text!)
-            print("URL: '\(url)'")
             if let jsonString = performStoreRequestWithURL(url) {
-                print("Received JSON string '\(jsonString)'")
+                if let dictionary = parseJSON(jsonString) {
+                    print("Dictionary \(dictionary)")
+                    
+                    tableView.reloadData()
+                    return
+                }
             }
             
-            tableView.reloadData()
+            showNetworkError()
         }
     }
     
