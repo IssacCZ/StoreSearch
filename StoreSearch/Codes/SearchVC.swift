@@ -77,6 +77,21 @@ class SearchVC: UIViewController {
         
         presentViewController(alert, animated: true, completion: nil)
     }
+    
+    func parseDictionary(dictionary: [String: AnyObject]) {
+        guard let array = dictionary["results"] as? [AnyObject] else {
+            print("Expected 'results' array")
+            return
+        }
+        
+        for resultDict in array {
+            if let resultDict = resultDict as? [String: AnyObject] {
+                if let wrapperType = resultDict["wrapperType"] as? String, let kind = resultDict["kind"] as? String {
+                    print("wrapperType: \(wrapperType), kind: \(kind)")
+                }
+            }
+        }
+    }
 }
 
 extension SearchVC: UISearchBarDelegate {
@@ -90,8 +105,9 @@ extension SearchVC: UISearchBarDelegate {
             let url = urlWithSearchText(searchBar.text!)
             if let jsonString = performStoreRequestWithURL(url) {
                 if let dictionary = parseJSON(jsonString) {
-                    print("Dictionary \(dictionary)")
+//                    print("Dictionary \(dictionary)")
                     
+                    parseDictionary(dictionary)
                     tableView.reloadData()
                     return
                 }
