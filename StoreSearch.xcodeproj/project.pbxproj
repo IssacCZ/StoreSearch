@@ -16,6 +16,7 @@
 		228EA7711C355BFF00AE358B /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA7701C355BFF00AE358B /* SearchResult.swift */; };
 		228EA7731C362F7400AE358B /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228EA7721C362F7400AE358B /* SearchResultCell.xib */; };
 		228EA7751C3635B500AE358B /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA7741C3635B500AE358B /* SearchResultCell.swift */; };
+		228EA7771C365B3B00AE358B /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228EA7761C365B3B00AE358B /* NothingFoundCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		228EA7701C355BFF00AE358B /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		228EA7721C362F7400AE358B /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		228EA7741C3635B500AE358B /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		228EA7761C365B3B00AE358B /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		22E6FC401C02BD530095479F /* StoreSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -62,6 +64,7 @@
 				227986231C33F7DA00449E9C /* LaunchScreen.storyboard */,
 				227986241C33F7DA00449E9C /* Main.storyboard */,
 				228EA7721C362F7400AE358B /* SearchResultCell.xib */,
+				228EA7761C365B3B00AE358B /* NothingFoundCell.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			files = (
 				2279862B1C33F7DA00449E9C /* Main.storyboard in Resources */,
 				228EA7731C362F7400AE358B /* SearchResultCell.xib in Resources */,
+				228EA7771C365B3B00AE358B /* NothingFoundCell.xib in Resources */,
 				227986291C33F7DA00449E9C /* Assets.xcassets in Resources */,
 				227986301C33F83000449E9C /* Default-568h@2x.png in Resources */,
 				2279862A1C33F7DA00449E9C /* LaunchScreen.storyboard in Resources */,
