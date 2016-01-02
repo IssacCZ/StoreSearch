@@ -75,11 +75,56 @@
                         <outlet property="searchBar" destination="KLu-Rx-boK" id="VKY-nE-w1K"/>
                         <outlet property="segmentedControl" destination="l7H-ay-IjX" id="kpK-PV-oSE"/>
                         <outlet property="tableView" destination="szp-J1-Voy" id="nLn-m9-Ram"/>
+                        <segue destination="3Wl-D7-n2d" kind="presentation" identifier="ShowDetail" id="h2g-yG-yQs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="695" y="490"/>
         </scene>
+        <!--DetailVC-->
+        <scene sceneID="kZJ-Iu-xDH">
+            <objects>
+                <viewController id="3Wl-D7-n2d" customClass="DetailVC" customModule="StoreSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qPd-HW-a0F"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gmb-Bz-IFN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FUk-Rq-oqM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wr-hX-Uow" userLabel="Pop-up View">
+                                <rect key="frame" x="180" y="180" width="240" height="240"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdm-wb-zYL" userLabel="Close Button">
+                                        <rect key="frame" x="3" y="0.0" width="15" height="22"/>
+                                        <state key="normal" image="CloseButton"/>
+                                        <connections>
+                                            <action selector="close" destination="3Wl-D7-n2d" eventType="touchUpInside" id="SnW-yJ-eVO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.94999999999999996" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="nLF-Il-1pg"/>
+                                    <constraint firstAttribute="height" constant="240" id="wA6-1w-ZSH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="8wr-hX-Uow" firstAttribute="centerX" secondItem="FUk-Rq-oqM" secondAttribute="centerX" id="3HV-f5-XbK"/>
+                            <constraint firstItem="8wr-hX-Uow" firstAttribute="centerY" secondItem="FUk-Rq-oqM" secondAttribute="centerY" id="xS2-bY-MJC"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TKq-3N-q0B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1561" y="490"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="CloseButton" width="15" height="15"/>
+    </resources>
 </document>
