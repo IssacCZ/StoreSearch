@@ -10,7 +10,6 @@
 		227986271C33F7DA00449E9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2279861F1C33F7DA00449E9C /* AppDelegate.swift */; };
 		227986281C33F7DA00449E9C /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227986201C33F7DA00449E9C /* SearchVC.swift */; };
 		227986291C33F7DA00449E9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 227986221C33F7DA00449E9C /* Assets.xcassets */; };
-		2279862A1C33F7DA00449E9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227986231C33F7DA00449E9C /* LaunchScreen.storyboard */; };
 		2279862B1C33F7DA00449E9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227986241C33F7DA00449E9C /* Main.storyboard */; };
 		227986301C33F83000449E9C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2279862F1C33F83000449E9C /* Default-568h@2x.png */; };
 		228EA7711C355BFF00AE358B /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA7701C355BFF00AE358B /* SearchResult.swift */; };
@@ -24,7 +23,6 @@
 		2279861F1C33F7DA00449E9C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		227986201C33F7DA00449E9C /* SearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		227986221C33F7DA00449E9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		227986231C33F7DA00449E9C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		227986241C33F7DA00449E9C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		227986261C33F7DA00449E9C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2279862F1C33F83000449E9C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -63,7 +61,6 @@
 			children = (
 				2279862F1C33F83000449E9C /* Default-568h@2x.png */,
 				227986221C33F7DA00449E9C /* Assets.xcassets */,
-				227986231C33F7DA00449E9C /* LaunchScreen.storyboard */,
 				227986241C33F7DA00449E9C /* Main.storyboard */,
 				228EA7721C362F7400AE358B /* SearchResultCell.xib */,
 				228EA7761C365B3B00AE358B /* NothingFoundCell.xib */,
@@ -170,7 +167,6 @@
 				228EA7771C365B3B00AE358B /* NothingFoundCell.xib in Resources */,
 				227986291C33F7DA00449E9C /* Assets.xcassets in Resources */,
 				227986301C33F83000449E9C /* Default-568h@2x.png in Resources */,
-				2279862A1C33F7DA00449E9C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
