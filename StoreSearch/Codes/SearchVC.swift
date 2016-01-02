@@ -285,6 +285,10 @@ class SearchVC: UIViewController {
             
             coordinator.animateAlongsideTransition({ (_) -> Void in
                 controller.view.alpha = 1
+                self.searchBar.resignFirstResponder()
+                if self.presentedViewController != nil {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
                 }, completion: { (_) -> Void in
                     controller.didMoveToParentViewController(self)
             })

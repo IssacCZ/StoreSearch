@@ -9,6 +9,11 @@
 import UIKit
 
 class DetailVC: UIViewController {
+    
+    enum AnimationStyle {
+        case Fade
+        case Slide
+    }
 
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var artworkImageView: UIImageView!
@@ -20,8 +25,10 @@ class DetailVC: UIViewController {
     
     var searchResult: SearchResult!
     var downloadTask: NSURLSessionDownloadTask?
+    var dismissAnimationStyle = AnimationStyle.Fade
     
     @IBAction func close() {
+        dismissAnimationStyle = .Slide
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -102,7 +109,12 @@ extension DetailVC: UIViewControllerTransitioningDelegate {
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SlideOutAC()
+        switch dismissAnimationStyle {
+        case .Fade:
+            return FadeOutAC()
+        case .Slide:
+            return SlideOutAC()
+        }
     }
 }
 

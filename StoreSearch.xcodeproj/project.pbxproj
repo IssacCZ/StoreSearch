@@ -23,6 +23,7 @@
 		228EA7831C37FB7C00AE358B /* BounceAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA7821C37FB7C00AE358B /* BounceAC.swift */; };
 		228EA7851C38000800AE358B /* SlideOutAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA7841C38000800AE358B /* SlideOutAC.swift */; };
 		228EA7871C38056100AE358B /* LandscapeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA7861C38056100AE358B /* LandscapeVC.swift */; };
+		228EA7891C38258900AE358B /* FadeOutAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA7881C38258900AE358B /* FadeOutAC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		228EA7821C37FB7C00AE358B /* BounceAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BounceAC.swift; sourceTree = "<group>"; };
 		228EA7841C38000800AE358B /* SlideOutAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutAC.swift; sourceTree = "<group>"; };
 		228EA7861C38056100AE358B /* LandscapeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeVC.swift; sourceTree = "<group>"; };
+		228EA7881C38258900AE358B /* FadeOutAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeOutAC.swift; sourceTree = "<group>"; };
 		22E6FC401C02BD530095479F /* StoreSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 				228EA7821C37FB7C00AE358B /* BounceAC.swift */,
 				228EA7841C38000800AE358B /* SlideOutAC.swift */,
 				228EA7861C38056100AE358B /* LandscapeVC.swift */,
+				228EA7881C38258900AE358B /* FadeOutAC.swift */,
 			);
 			path = Codes;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				228EA7711C355BFF00AE358B /* SearchResult.swift in Sources */,
 				228EA7751C3635B500AE358B /* SearchResultCell.swift in Sources */,
 				228EA7831C37FB7C00AE358B /* BounceAC.swift in Sources */,
+				228EA7891C38258900AE358B /* FadeOutAC.swift in Sources */,
 				227986271C33F7DA00449E9C /* AppDelegate.swift in Sources */,
 				228EA7851C38000800AE358B /* SlideOutAC.swift in Sources */,
 				228EA77B1C37B37D00AE358B /* UIImageView+DownloadImage.swift in Sources */,
