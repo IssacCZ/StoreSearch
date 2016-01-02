@@ -20,6 +20,8 @@
 		228EA77D1C37BB5100AE358B /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA77C1C37BB5100AE358B /* DetailVC.swift */; };
 		228EA77F1C37BE7100AE358B /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA77E1C37BE7100AE358B /* DimmingPresentationController.swift */; };
 		228EA7811C37F4C700AE358B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA7801C37F4C700AE358B /* GradientView.swift */; };
+		228EA7831C37FB7C00AE358B /* BounceAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA7821C37FB7C00AE358B /* BounceAC.swift */; };
+		228EA7851C38000800AE358B /* SlideOutAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA7841C38000800AE358B /* SlideOutAC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		228EA77C1C37BB5100AE358B /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		228EA77E1C37BE7100AE358B /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 		228EA7801C37F4C700AE358B /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		228EA7821C37FB7C00AE358B /* BounceAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BounceAC.swift; sourceTree = "<group>"; };
+		228EA7841C38000800AE358B /* SlideOutAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutAC.swift; sourceTree = "<group>"; };
 		22E6FC401C02BD530095479F /* StoreSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -62,6 +66,8 @@
 				228EA77C1C37BB5100AE358B /* DetailVC.swift */,
 				228EA77E1C37BE7100AE358B /* DimmingPresentationController.swift */,
 				228EA7801C37F4C700AE358B /* GradientView.swift */,
+				228EA7821C37FB7C00AE358B /* BounceAC.swift */,
+				228EA7841C38000800AE358B /* SlideOutAC.swift */,
 			);
 			path = Codes;
 			sourceTree = "<group>";
@@ -189,7 +195,9 @@
 				228EA77F1C37BE7100AE358B /* DimmingPresentationController.swift in Sources */,
 				228EA7711C355BFF00AE358B /* SearchResult.swift in Sources */,
 				228EA7751C3635B500AE358B /* SearchResultCell.swift in Sources */,
+				228EA7831C37FB7C00AE358B /* BounceAC.swift in Sources */,
 				227986271C33F7DA00449E9C /* AppDelegate.swift in Sources */,
+				228EA7851C38000800AE358B /* SlideOutAC.swift in Sources */,
 				228EA77B1C37B37D00AE358B /* UIImageView+DownloadImage.swift in Sources */,
 				228EA7811C37F4C700AE358B /* GradientView.swift in Sources */,
 				228EA77D1C37BB5100AE358B /* DetailVC.swift in Sources */,
