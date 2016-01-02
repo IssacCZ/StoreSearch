@@ -50,6 +50,8 @@ class DetailVC: UIViewController {
         if searchResult != nil {
             updateUI()
         }
+        
+        view.backgroundColor = UIColor.clearColor()
     }
     
     func updateUI() {
