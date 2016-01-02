@@ -253,6 +253,15 @@ class SearchVC: UIViewController {
             dataTask?.resume()
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowDetail" {
+            let detailVC = segue.destinationViewController as! DetailVC
+            let indexPath = sender as! NSIndexPath
+            let searchResult = searchResults[indexPath.row]
+            detailVC.searchResult = searchResult
+        }
+    }
 }
 
 extension SearchVC: UISearchBarDelegate {

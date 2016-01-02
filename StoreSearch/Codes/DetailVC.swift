@@ -18,8 +18,17 @@ class DetailVC: UIViewController {
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var priceButton: UIButton!
     
+    var searchResult: SearchResult!
+    var downloadTask: NSURLSessionDownloadTask?
+    
     @IBAction func close() {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func openInStore() {
+        if let url = NSURL(string: searchResult.storeURL) {
+            UIApplication.sharedApplication().openURL(url)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,6 +46,47 @@ class DetailVC: UIViewController {
         gestureRecognizer.cancelsTouchesInView = false
         gestureRecognizer.delegate = self
         view.addGestureRecognizer(gestureRecognizer)
+        
+        if searchResult != nil {
+            updateUI()
+        }
+    }
+    
+    func updateUI() {
+        nameLabel.text = searchResult.name
+        
+        if searchResult.artistName.isEmpty {
+            artistNameLabel.text = "Unknown"
+        } else {
+            artistNameLabel.text = searchResult.artistName
+        }
+        
+        kindLabel.text = searchResult.kindForDisplay()
+        genreLabel.text = searchResult.genre
+        
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        formatter.currencyCode = searchResult.currency
+        
+        let priceText: String
+        if searchResult.price == 0 || searchResult.price == -1 {
+            priceText = "Free"
+        } else if let text = formatter.stringFromNumber(searchResult.price) {
+            priceText = text
+        } else {
+            priceText = ""
+        }
+        
+        priceButton.setTitle(priceText, forState: .Normal)
+        
+        if let url = NSURL(string: searchResult.artworkURL100) {
+            downloadTask = artworkImageView.loadImageWithURL(url)
+        }
+    }
+    
+    deinit {
+        print("deinit \(self)")
+        downloadTask?.cancel()
     }
 }
 
