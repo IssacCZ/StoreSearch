@@ -82,6 +82,36 @@
             </objects>
             <point key="canvasLocation" x="695" y="490"/>
         </scene>
+        <!--LandscapeVC-->
+        <scene sceneID="BWc-Bi-KSj">
+            <objects>
+                <viewController storyboardIdentifier="LandscapeVC" id="s9y-uc-8Q6" customClass="LandscapeVC" customModule="StoreSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zOS-QX-HfH"/>
+                        <viewControllerLayoutGuide type="bottom" id="kx3-5D-RjL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fEO-Ft-Jkg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUB-eH-KGK">
+                                <rect key="frame" x="278" y="290" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZUB-eH-KGK" firstAttribute="centerY" secondItem="fEO-Ft-Jkg" secondAttribute="centerY" id="Woi-Jb-eF3"/>
+                            <constraint firstItem="ZUB-eH-KGK" firstAttribute="centerX" secondItem="fEO-Ft-Jkg" secondAttribute="centerX" id="zze-Bd-fGe"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p8v-SS-CfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1561" y="-250"/>
+        </scene>
         <!--DetailVC-->
         <scene sceneID="kZJ-Iu-xDH">
             <objects>

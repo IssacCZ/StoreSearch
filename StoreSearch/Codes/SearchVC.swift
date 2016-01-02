@@ -17,6 +17,7 @@ class SearchVC: UIViewController {
     var hasSearched = false
     var isLoading = false
     var dataTask: NSURLSessionDataTask?
+    var landscapeVC: LandscapeVC?
     
     struct TableViewCellIdentifiers {
         static let searchResultCell = "SearchResultCell"
@@ -260,6 +261,47 @@ class SearchVC: UIViewController {
             let indexPath = sender as! NSIndexPath
             let searchResult = searchResults[indexPath.row]
             detailVC.searchResult = searchResult
+        }
+    }
+    
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+        switch newCollection.verticalSizeClass {
+        case .Compact:
+            showwLandscapeVCWithCoordinator(coordinator)
+        case .Regular, .Unspecified:
+            hideLandspaceVCWithCoordinator(coordinator)
+        }
+    }
+    
+    func showwLandscapeVCWithCoordinator(coordinator: UIViewControllerTransitionCoordinator) {
+        precondition(landscapeVC == nil)
+        landscapeVC = storyboard!.instantiateViewControllerWithIdentifier("LandscapeVC") as? LandscapeVC
+        if let controller = landscapeVC {
+            controller.view.frame = view.bounds
+            controller.view.alpha = 0
+            view.addSubview(controller.view)
+            addChildViewController(controller)
+            
+            coordinator.animateAlongsideTransition({ (_) -> Void in
+                controller.view.alpha = 1
+                }, completion: { (_) -> Void in
+                    controller.didMoveToParentViewController(self)
+            })
+        }
+    }
+    
+    func hideLandspaceVCWithCoordinator(coordinator: UIViewControllerTransitionCoordinator) {
+        if let controller = landscapeVC {
+            controller.willMoveToParentViewController(nil)
+            
+            coordinator.animateAlongsideTransition({ (_) -> Void in
+                controller.view.alpha = 0
+                }, completion: { (_) -> Void in
+                    controller.view.removeFromSuperview()
+                    controller.removeFromParentViewController()
+                    self.landscapeVC = nil
+            })
         }
     }
 }
