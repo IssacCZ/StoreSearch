@@ -101,7 +101,7 @@ class LandscapeVC: UIViewController {
         view.viewWithTag(1000)?.removeFromSuperview()
     }
     
-    private func titleButton(searchResuls: [SearchResult]) {
+    private func titleButton(searchResults: [SearchResult]) {
         var columnsPerPage = 5
         var rowsPerPage = 3
         var itemWidth: CGFloat = 96
@@ -138,11 +138,13 @@ class LandscapeVC: UIViewController {
         var row = 0
         var column = 0
         var x = marginX
-        for searchResult in searchResuls {
+        for (index, searchResult) in searchResults.enumerate() {
             let button = UIButton(type: .Custom)
             button.setBackgroundImage(UIImage(named: "LandscapeButton"), forState: .Normal)
             downloadImageForSearchResult(searchResult, andPlaceOnButton: button)
             button.frame = CGRect(x: x + paddingHorz, y: marginY + CGFloat(row) * itemHeight + paddingVert, width: buttonWidth, height: buttonHeight)
+            button.tag = 2000 + index
+            button.addTarget(self, action: Selector("buttonPressed:"), forControlEvents: .TouchUpInside)
             
             scrollView.addSubview(button)
             
@@ -156,11 +158,25 @@ class LandscapeVC: UIViewController {
         }
         
         let buttonsPerPage = columnsPerPage * rowsPerPage
-        let numPages = 1 + (searchResuls.count - 1) / buttonsPerPage
+        let numPages = 1 + (searchResults.count - 1) / buttonsPerPage
         scrollView.contentSize = CGSize(width: CGFloat(numPages) * scrollViewWidth, height: scrollView.bounds.size.height)
         print("Number of pages: \(numPages)")
         pageControl.numberOfPages = numPages
         pageControl.currentPage = 0
+    }
+    
+    func buttonPressed(sender: UIButton) {
+        performSegueWithIdentifier("ShowDetail", sender: sender)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowDetail" {
+            if case .Results(let list) = search.state {
+                let detailVC = segue.destinationViewController as! DetailVC
+                let searchResult = list[sender!.tag - 2000]
+                detailVC.searchResult = searchResult
+            }
+        }
     }
     
     private func downloadImageForSearchResult(searchResult: SearchResult, andPlaceOnButton button: UIButton) {

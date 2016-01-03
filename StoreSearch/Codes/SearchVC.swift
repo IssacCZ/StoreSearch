@@ -120,6 +120,9 @@ class SearchVC: UIViewController {
             
             coordinator.animateAlongsideTransition({ (_) -> Void in
                 controller.view.alpha = 0
+                if self.presentedViewController != nil {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
                 }, completion: { (_) -> Void in
                     controller.view.removeFromSuperview()
                     controller.removeFromParentViewController()
