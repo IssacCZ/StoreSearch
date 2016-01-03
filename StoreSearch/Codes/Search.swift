@@ -11,13 +11,33 @@ import Foundation
 typealias SearchCompete = (Bool) -> Void
 
 class Search {
+    enum Category: Int {
+        case All = 0
+        case Music = 1
+        case Software = 2
+        case EBook = 3
+        
+        var entityName: String {
+            switch self {
+            case .All:
+                return ""
+            case .Music:
+                return "musicTrack"
+            case .Software:
+                return "software"
+            case .EBook:
+                return "ebook"
+            }
+        }
+    }
+    
     var searchResults = [SearchResult]()
     var hasSearched = false
     var isLoading = false
     
     private var dataTask: NSURLSessionDataTask? = nil
     
-    func performSearchForText(text: String, category: Int, complete: SearchCompete) {
+    func performSearchForText(text: String, category: Category, complete: SearchCompete) {
         print("Searching...")
         
         if !text.isEmpty {
@@ -57,18 +77,8 @@ class Search {
         }
     }
     
-    private func urlWithSearchText(searchText: String, category: Int) -> NSURL {
-        let entityName: String
-        switch category {
-        case 1:
-            entityName = "musicTrack"
-        case 2:
-            entityName = "software"
-        case 3:
-            entityName = "ebook"
-        default:
-            entityName = ""
-        }
+    private func urlWithSearchText(searchText: String, category: Category) -> NSURL {
+        let entityName = category.entityName
         
         let escapedSearchText = searchText.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200&entity=%@", escapedSearchText, entityName)

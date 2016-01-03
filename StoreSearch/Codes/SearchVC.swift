@@ -12,7 +12,7 @@ class SearchVC: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-
+    
     var landscapeVC: LandscapeVC?
     let search = Search()
     
@@ -50,22 +50,24 @@ class SearchVC: UIViewController {
         
         presentViewController(alert, animated: true, completion: nil)
     }
-        
+    
     @IBAction func segmentChanged(sender: UISegmentedControl) {
         performSearch()
     }
     
     func performSearch() {
-        search.performSearchForText(searchBar.text!, category: segmentedControl.selectedSegmentIndex, complete: {
-            success in
-            if !success {
-                self.showNetworkError()
-            }
-            
-            self.tableView.reloadData()
-        })
-        tableView.reloadData()
-        searchBar.resignFirstResponder()
+        if let category = Search.Category(rawValue: segmentedControl.selectedSegmentIndex) {
+            search.performSearchForText(searchBar.text!, category: category, complete: {
+                success in
+                if !success {
+                    self.showNetworkError()
+                }
+                
+                self.tableView.reloadData()
+            })
+            tableView.reloadData()
+            searchBar.resignFirstResponder()
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
