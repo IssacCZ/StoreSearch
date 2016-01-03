@@ -64,6 +64,7 @@ class SearchVC: UIViewController {
                 }
                 
                 self.tableView.reloadData()
+                self.landscapeVC?.searchResultsReceived()
             })
             tableView.reloadData()
             searchBar.resignFirstResponder()

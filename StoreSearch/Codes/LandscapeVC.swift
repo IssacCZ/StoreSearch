@@ -49,12 +49,37 @@ class LandscapeVC: UIViewController {
             firstTime = false
             
             switch search.state {
-            case .NotSearchedYet, .NoResults, .Loading:
+            case .NotSearchedYet, .NoResults:
                 break
+            case .Loading:
+                showSpinner()
             case .Results(let list):
                 titleButton(list)
             }
         }
+    }
+    
+    private func showSpinner() {
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        spinner.center = CGPoint(x: CGRectGetMidX(scrollView.bounds) + 0.5, y: CGRectGetMidY(scrollView.bounds) + 0.5)
+        spinner.tag = 1000
+        view.addSubview(spinner)
+        spinner.startAnimating()
+    }
+    
+    func searchResultsReceived() {
+        hideSpinner()
+        
+        switch search.state {
+        case .Loading, .NoResults, .NotSearchedYet:
+            break
+        case .Results(let list):
+            titleButton(list)
+        }
+    }
+    
+    private func hideSpinner() {
+        view.viewWithTag(1000)?.removeFromSuperview()
     }
     
     private func titleButton(searchResuls: [SearchResult]) {
