@@ -13,6 +13,12 @@ class LandscapeVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    @IBAction func pageChanged(sender: UIPageControl) {
+        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
+            self.scrollView.contentOffset = CGPoint(x: self.scrollView.bounds.size.width * CGFloat(sender.currentPage), y: 0)
+            }, completion: nil)
+    }
+    
     var searchResults = [SearchResult]()
     private var firstTime = true
     
@@ -29,6 +35,7 @@ class LandscapeVC: UIViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = true
         
         scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "LandscapeBackground")!)
+        pageControl.currentPage = 0
     }
     
     override func viewWillLayoutSubviews() {
@@ -101,9 +108,19 @@ class LandscapeVC: UIViewController {
         let numPages = 1 + (searchResults.count - 1) / buttonsPerPage
         scrollView.contentSize = CGSize(width: CGFloat(numPages) * scrollViewWidth, height: scrollView.bounds.size.height)
         print("Number of pages: \(numPages)")
+        pageControl.numberOfPages = numPages
+        pageControl.currentPage = 0
     }
     
     deinit {
         print("deinit \(self)")
+    }
+}
+
+extension LandscapeVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let width = scrollView.frame.size.width
+        let currentpage = Int((scrollView.contentOffset.x + width / 2) / width)
+        pageControl.currentPage = currentpage
     }
 }
