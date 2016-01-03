@@ -31,9 +31,14 @@ class Search {
         }
     }
     
-    var searchResults = [SearchResult]()
-    var hasSearched = false
-    var isLoading = false
+    enum State {
+        case NotSearchedYet
+        case Loading
+        case NoResults
+        case Results([SearchResult])
+    }
+    
+    private(set) var state: State = .NotSearchedYet
     
     private var dataTask: NSURLSessionDataTask? = nil
     
@@ -43,29 +48,29 @@ class Search {
         if !text.isEmpty {
             dataTask?.cancel()
             
-            isLoading = true
-            hasSearched = true
-            searchResults = [SearchResult]()
+            state = .Loading
             
             let url = urlWithSearchText(text, category: category)
             let session = NSURLSession.sharedSession()
             dataTask = session.dataTaskWithURL(url, completionHandler: {
                 data, response, error in
+                
+                self.state = .NotSearchedYet
                 var success = false
                 if let error = error where error.code == -999 {
                     return
                 }
                 
                 if let httpResponse = response as? NSHTTPURLResponse where httpResponse.statusCode == 200, let data = data, dictionary = self.parseJSON(data) {
-                    self.searchResults = self.parseDictionary(dictionary)
-                    self.searchResults.sortInPlace(<)
-                    self.isLoading = false
+                    var searchResults = self.parseDictionary(dictionary)
+                    if searchResults.isEmpty {
+                        self.state = .NoResults
+                    } else {
+                        searchResults.sortInPlace(<)
+                        self.state = .Results(searchResults)
+                    }
+                    
                     success = true
-                }
-                
-                if !success {
-                    self.isLoading = false
-                    self.hasSearched = false
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
