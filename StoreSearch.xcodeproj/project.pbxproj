@@ -24,6 +24,7 @@
 		228EA7851C38000800AE358B /* SlideOutAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA7841C38000800AE358B /* SlideOutAC.swift */; };
 		228EA7871C38056100AE358B /* LandscapeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA7861C38056100AE358B /* LandscapeVC.swift */; };
 		228EA7891C38258900AE358B /* FadeOutAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA7881C38258900AE358B /* FadeOutAC.swift */; };
+		228EA78B1C38B7D900AE358B /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EA78A1C38B7D900AE358B /* Search.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		228EA7841C38000800AE358B /* SlideOutAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutAC.swift; sourceTree = "<group>"; };
 		228EA7861C38056100AE358B /* LandscapeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeVC.swift; sourceTree = "<group>"; };
 		228EA7881C38258900AE358B /* FadeOutAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeOutAC.swift; sourceTree = "<group>"; };
+		228EA78A1C38B7D900AE358B /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		22E6FC401C02BD530095479F /* StoreSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -74,6 +76,7 @@
 				228EA7841C38000800AE358B /* SlideOutAC.swift */,
 				228EA7861C38056100AE358B /* LandscapeVC.swift */,
 				228EA7881C38258900AE358B /* FadeOutAC.swift */,
+				228EA78A1C38B7D900AE358B /* Search.swift */,
 			);
 			path = Codes;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				228EA78B1C38B7D900AE358B /* Search.swift in Sources */,
 				228EA7871C38056100AE358B /* LandscapeVC.swift in Sources */,
 				227986281C33F7DA00449E9C /* SearchVC.swift in Sources */,
 				228EA77F1C37BE7100AE358B /* DimmingPresentationController.swift in Sources */,

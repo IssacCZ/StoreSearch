@@ -19,7 +19,7 @@ class LandscapeVC: UIViewController {
             }, completion: nil)
     }
     
-    var searchResults = [SearchResult]()
+    var search: Search!
     private var firstTime = true
     private var downloadTasks = [NSURLSessionDownloadTask]()
     
@@ -47,7 +47,7 @@ class LandscapeVC: UIViewController {
         
         if firstTime {
             firstTime = false
-            titleButton(searchResults)
+            titleButton(search.searchResults)
         }
     }
     
@@ -88,7 +88,7 @@ class LandscapeVC: UIViewController {
         var row = 0
         var column = 0
         var x = marginX
-        for searchResult in searchResults {
+        for searchResult in searchResuls {
             let button = UIButton(type: .Custom)
             button.setBackgroundImage(UIImage(named: "LandscapeButton"), forState: .Normal)
             downloadImageForSearchResult(searchResult, andPlaceOnButton: button)
@@ -106,7 +106,7 @@ class LandscapeVC: UIViewController {
         }
         
         let buttonsPerPage = columnsPerPage * rowsPerPage
-        let numPages = 1 + (searchResults.count - 1) / buttonsPerPage
+        let numPages = 1 + (searchResuls.count - 1) / buttonsPerPage
         scrollView.contentSize = CGSize(width: CGFloat(numPages) * scrollViewWidth, height: scrollView.bounds.size.height)
         print("Number of pages: \(numPages)")
         pageControl.numberOfPages = numPages
