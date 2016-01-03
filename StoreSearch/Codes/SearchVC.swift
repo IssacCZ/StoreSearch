@@ -278,6 +278,7 @@ class SearchVC: UIViewController {
         precondition(landscapeVC == nil)
         landscapeVC = storyboard!.instantiateViewControllerWithIdentifier("LandscapeVC") as? LandscapeVC
         if let controller = landscapeVC {
+            controller.searchResults = searchResults
             controller.view.frame = view.bounds
             controller.view.alpha = 0
             view.addSubview(controller.view)
